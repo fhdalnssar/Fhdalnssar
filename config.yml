@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: "ar"
+
+collections:
+  - name: "posts"
+    label: "المقالات"
+    label_singular: "مقال"
+    files:
+      - name: "posts"
+        label: "قائمة المقالات"
+        file: "data/posts.json"
+        fields:
+          - name: "posts"
+            label: "المقالات"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { name: "title", label: "العنوان", widget: "string" }
+              - { name: "date", label: "التاريخ", widget: "datetime", format: "DD MMMM YYYY", date_format: "DD MMMM YYYY", time_format: false }
+              - { name: "category", label: "التصنيف", widget: "string", default: "تدوينات" }
+              - { name: "excerpt", label: "مقتطف قصير (يظهر بالصفحة الرئيسية)", widget: "text" }
+              - { name: "body", label: "نص المقال الكامل", widget: "markdown" }
